@@ -68,4 +68,15 @@ public class MedicoController {
 
         return ResponseEntity.noContent().build();
     }
+
+
+    /*
+     * Detalha os dados de um médico com um id específico
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var medico = medicoRepository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
+    }
 }
